@@ -159,4 +159,8 @@ Contributions are always welcome.
 
 MIT License
 
+<<<<<<< HEAD
 Do whatever you want, just don't claim you wrote it 😄
+=======
+Do whatever you want, just don't claim you wrote it 😄
+>>>>>>> 9351e090cf801d9a451f4e525bcdb3561d444c76
