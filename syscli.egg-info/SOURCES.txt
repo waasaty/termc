@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+SysCLI/__init__.py
+SysCLI/core.py
+syscli.egg-info/PKG-INFO
+syscli.egg-info/SOURCES.txt
+syscli.egg-info/dependency_links.txt
+syscli.egg-info/requires.txt
+syscli.egg-info/top_level.txt
