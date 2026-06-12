@@ -6,3 +6,5 @@ venv/
 .env/
 .vscode/
 .idea/
+syscli.egg-info
+test/
