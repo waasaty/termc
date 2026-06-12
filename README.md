@@ -27,15 +27,15 @@ git clone https://github.com/waasaty/termc.git
 ```python
 import termc
 
-termc.Config.program_name("MyCoolApp")
+termc.termcConfig.program_name("MyCoolApp")
 
-termc.print_header()
+termc.header()
 
-termc.print_info("Application started")
-termc.print_succes("Everything works!")
-termc.print_warn("Something looks suspicious...")
-termc.print_error("Oops, an error occurred")
-termc.print_dbg("Debug message")
+termc.info("Application started")
+termc.succes("Everything works!")
+termc.warn("Something looks suspicious...")
+termc.error("Oops, an error occurred")
+termc.dbg("Debug message")
 ```
 
 Output:
@@ -61,10 +61,10 @@ Create nice-looking input prompts:
 ```python
 import termc
 
-termc.input_start_header()
+termc.prompt_header()
 
-name = termc.input_middle("Enter your name")
-age = termc.input_bottom("Enter your age")
+name = termc.prompt_mid("Enter your name")
+age = termc.prompt_bot("Enter your age")
 ```
 
 Example:
@@ -80,7 +80,7 @@ Example:
 ## 📋 Menus
 
 ```python
-termc.print_menu(
+termc.menu(
     "Main Menu",
     [
         "Start",
@@ -107,7 +107,7 @@ Output:
 ## 🎨 Banners
 
 ```python
-termc.print_banner("""
+termc.banner("""
 Welcome to
 My Awesome App
 """)

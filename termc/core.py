@@ -18,7 +18,7 @@ termc_pc_username = getpass.getuser()
 termc_program_name = "termc"
 
 # CONFIG
-class Config:
+class termcConfig:
     def program_name(name: str) -> None:
         global termc_program_name
         termc_program_name = name
@@ -29,7 +29,7 @@ class Config:
 # inputs
 # -------------------------
 
-def input_start_header() -> None:
+def prompt_header() -> None:
     timestamp = datetime.now().strftime("%H:%M:%S")
     print(
         f'{termc_C_PRIMARY}╭─{Style.RESET_ALL} '
@@ -40,11 +40,11 @@ def input_start_header() -> None:
     )
 
 
-def input_middle(message: str) -> str:
+def prompt_mid(message: str) -> str:
     return input(f'{termc_C_PRIMARY}├─❯{Style.RESET_ALL} {message}: ')
 
 
-def input_bottom(message: str) -> str:
+def prompt_bot(message: str) -> str:
     return input(f'{termc_C_PRIMARY}╰─❯{Style.RESET_ALL} {message}: ')
 
 
@@ -52,31 +52,31 @@ def input_bottom(message: str) -> str:
 # prints
 # -------------------------
 
-def print_info(message: str) -> None:
+def info(message: str) -> None:
     print(f'{termc_C_PRIMARY}[i]{Style.RESET_ALL} {message}')
 
 
-def print_error(message: str) -> None:
+def error(message: str) -> None:
     print(f'{termc_C_ERR}[✗]{Style.RESET_ALL} {message}')
 
 
-def print_success(message: str) -> None:
+def success(message: str) -> None:
     print(f'{termc_C_OK}[✓]{Style.RESET_ALL} {message}')
 
 
-def print_warn(message: str) -> None:
+def warn(message: str) -> None:
     print(f'{termc_C_WARN}[!]{Style.RESET_ALL} {message}')
 
 
-def print_dbg(message: str) -> None:
+def dbg(message: str) -> None:
     print(f'{termc_C_DBG}[~]{Style.RESET_ALL} {message}')
 
 
-def print_option(number: int, message: str) -> str:
+def option(number: int, message: str) -> str:
     return f'{termc_C_PRIMARY}[{Style.BRIGHT}{number}{Style.NORMAL}]{Style.RESET_ALL} {message}'
 
 
-def print_banner(text: str, color: str = termc_C_PRIMARY) -> None:
+def banner(text: str, color: str = termc_C_PRIMARY) -> None:
     lines = text.splitlines()
     width = max(len(line) for line in lines) + 2
     print(f'{color}╭{"─" * width}╮')
@@ -85,15 +85,15 @@ def print_banner(text: str, color: str = termc_C_PRIMARY) -> None:
     print(f'{color}╰{"─" * width}╯{Style.RESET_ALL}')
 
 
-def print_separator(length: int = 50, color: str = termc_C_MUTED) -> None:
+def separator(length: int = 50, color: str = termc_C_MUTED) -> None:
     print(f'{color}{"─" * length}{Style.RESET_ALL}')
 
 
-def print_header() -> None:
-    print_banner(f"{termc_program_name}", color=termc_C_PRIMARY)
+def header() -> None:
+    banner(f"{termc_program_name}", color=termc_C_PRIMARY)
     print()
 
-def print_menu(title: str, options: list[str]) -> None:
+def menu(title: str, options: list[str]) -> None:
     numbered = [f"{i}. {option}" for i, option in enumerate(options, start=1)]
     width = max(len(title), max(len(o) for o in numbered)) + 2
 
