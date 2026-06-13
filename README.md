@@ -1,6 +1,4 @@
 ![Banner](assets/banner.png)
-# 🚀 TermC
-
 A tiny Python library that makes terminal apps look way cooler with almost no effort.
 
 No more boring `print()` spam.
