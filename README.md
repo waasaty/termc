@@ -1,6 +1,6 @@
 ![Banner](assets/banner.png)
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.0.2-blue" />
+  <img src="https://img.shields.io/badge/version-0.1.0-blue" />
   <img src="https://img.shields.io/badge/license-MIT-green" />
   <img src="https://img.shields.io/badge/PyPI%20status-inactive-red" />
 </p>
