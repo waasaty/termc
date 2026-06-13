@@ -25,3 +25,7 @@ classifiers = [
 Homepage = "https://github.com/waasaty/termc"
 Documentation = "https://apt29.gitbook.io/termc"
 Source = "https://github.com/waasaty/termc"
+
+[tool.setuptools.packages.find]
+include = ["termc*"]
+exclude = ["assets*"]
