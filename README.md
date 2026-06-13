@@ -1,4 +1,5 @@
 ![Banner](assets/banner.png)
+![Version](https://img.shields.io/badge/version-0.0.1-blue)
 A tiny Python library that makes terminal apps look way cooler with almost no effort.
 
 No more boring `print()` spam.
@@ -52,7 +53,7 @@ Contributions are always welcome.
 
 ## 📜 License
 
-MIT License
+![License](https://img.shields.io/badge/license-MIT-green)
 
 ---
 Do whatever you want, just don't claim you wrote it ;)
