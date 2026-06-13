@@ -1,6 +1,6 @@
 ![Banner](assets/banner.png)
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.0.1-blue" />
+  <img src="https://img.shields.io/badge/version-0.0.2-blue" />
   <img src="https://img.shields.io/badge/license-MIT-green" />
   <img src="https://img.shields.io/badge/PyPI%20status-inactive-red" />
 </p>
@@ -14,11 +14,11 @@ Just clean banners, colorful messages, menus, separators, and stylish prompts.
 
 ## 📦 Installation
 
-<!-- ```bash
+```bash
 pip install termc
 ```
 
-Or clone the repository: -->
+Or clone the repository:
 
 ```bash
 git clone https://github.com/waasaty/termc.git
