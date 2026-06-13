@@ -20,9 +20,44 @@ termc_program_name = "termc"
 
 # CONFIG
 class termcConfig:
+    @staticmethod
     def program_name(name: str) -> None:
         global termc_program_name
         termc_program_name = name
+
+    @staticmethod
+    def preset(name: str = "default"):
+        global termc_C_PRIMARY, termc_C_MUTED, termc_C_OK, termc_C_ERR, termc_C_WARN, termc_C_DBG
+        if name == "default":
+            termc_C_PRIMARY = Fore.CYAN
+            termc_C_MUTED = Fore.LIGHTBLACK_EX
+            termc_C_OK = Fore.GREEN
+            termc_C_ERR = Fore.RED
+            termc_C_WARN = Fore.YELLOW
+            termc_C_DBG = Fore.MAGENTA
+        elif name == "ocean":
+            termc_C_PRIMARY = Fore.BLUE
+            termc_C_MUTED = Fore.LIGHTBLACK_EX
+            termc_C_OK = Fore.LIGHTGREEN_EX
+            termc_C_ERR = Fore.LIGHTRED_EX
+            termc_C_WARN = Fore.LIGHTYELLOW_EX
+            termc_C_DBG = Fore.LIGHTCYAN_EX
+        elif name == "sunset":
+            termc_C_PRIMARY = Fore.LIGHTRED_EX
+            termc_C_MUTED = Fore.LIGHTBLACK_EX
+            termc_C_OK = Fore.LIGHTGREEN_EX
+            termc_C_ERR = Fore.RED
+            termc_C_WARN = Fore.LIGHTYELLOW_EX
+            termc_C_DBG = Fore.LIGHTMAGENTA_EX
+        elif name == "mono":
+            termc_C_PRIMARY = Fore.WHITE
+            termc_C_MUTED = Fore.LIGHTBLACK_EX
+            termc_C_OK = Fore.WHITE
+            termc_C_ERR = Fore.LIGHTWHITE_EX
+            termc_C_WARN = Fore.LIGHTBLACK_EX
+            termc_C_DBG = Fore.LIGHTBLACK_EX
+        else:
+            print("Available presets: default, mono, ocean, sunset")
 
 
 ### FUNCTIONS
@@ -77,7 +112,9 @@ def option(number: int, message: str) -> str:
     return f'{termc_C_PRIMARY}[{Style.BRIGHT}{number}{Style.NORMAL}]{Style.RESET_ALL} {message}'
 
 
-def banner(text: str, color: str = termc_C_PRIMARY) -> None:
+def banner(text: str, color: str = None) -> None:
+    if color is None:
+        color = termc_C_PRIMARY
     lines = text.splitlines()
     width = max(len(line) for line in lines) + 2
     print(f'{color}╭{"─" * width}╮')
@@ -86,7 +123,9 @@ def banner(text: str, color: str = termc_C_PRIMARY) -> None:
     print(f'{color}╰{"─" * width}╯{Style.RESET_ALL}')
 
 
-def separator(length: int = 50, color: str = termc_C_MUTED) -> None:
+def separator(length: int = 50, color: str = None) -> None:
+    if color is None:
+        color = termc_C_MUTED
     print(f'{color}{"─" * length}{Style.RESET_ALL}')
 
 

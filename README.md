@@ -138,6 +138,13 @@ Now prompts and headers will use:
 username@SuperApp
 ```
 
+Change the preset:
+```python
+termc.termcConfig.preset("default")
+```
+Available presets: ```default, mono, ocean, sunset```
+
+
 ---
 
 ## 💡 Why termc?
