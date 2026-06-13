@@ -28,7 +28,6 @@ Or clone the repository:
 ```bash
 git clone https://github.com/waasaty/termc.git
 ```
-(PyPI support coming soon 🚧)
 
 ---
 
