@@ -2,13 +2,18 @@
 <p align="center">
   <img src="https://img.shields.io/badge/version-0.1.0-blue" />
   <img src="https://img.shields.io/badge/license-MIT-green" />
-  <img src="https://img.shields.io/badge/PyPI%20status-inactive-red" />
+  <img src="https://img.shields.io/badge/PyPI%20status-active-red" />
 </p>
 A tiny Python library that makes terminal apps look way cooler with almost no effort.
 
 No more boring `print()` spam.
 No more ugly CLI menus.
 Just clean banners, colorful messages, menus, separators, and stylish prompts.
+
+---
+
+## PyPI
+https://pypi.org/project/termc/0.1.0/
 
 ---
 
