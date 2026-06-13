@@ -22,7 +22,7 @@ git clone https://github.com/waasaty/termc.git
 
 ---
 
-DOCS
+## 📕 Docs
 https://apt29.gitbook.io/termc
 
 ---
