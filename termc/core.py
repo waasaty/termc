@@ -1,12 +1,12 @@
-# LIBS
 from colorama import Fore, Style, init
 import getpass
 from datetime import datetime
 import sys
+import shutil
+import os
 
 init(autoreset=True)    
 
-# COLORS
 termc_C_PRIMARY = Fore.CYAN
 termc_C_MUTED = Fore.LIGHTBLACK_EX
 termc_C_OK = Fore.GREEN
@@ -14,11 +14,9 @@ termc_C_ERR = Fore.RED
 termc_C_WARN = Fore.YELLOW
 termc_C_DBG = Fore.MAGENTA
 
-# VARIABLES
 termc_pc_username = getpass.getuser()
 termc_program_name = "termc"
 
-# CONFIG
 class termcConfig:
     @staticmethod
     def program_name(name: str) -> None:
@@ -56,15 +54,39 @@ class termcConfig:
             termc_C_ERR = Fore.LIGHTWHITE_EX
             termc_C_WARN = Fore.LIGHTBLACK_EX
             termc_C_DBG = Fore.LIGHTBLACK_EX
+        elif name == "cyberpunk":
+            termc_C_PRIMARY = Fore.MAGENTA
+            termc_C_MUTED = Fore.LIGHTBLACK_EX
+            termc_C_OK = Fore.CYAN
+            termc_C_ERR = Fore.LIGHTRED_EX
+            termc_C_WARN = Fore.LIGHTYELLOW_EX
+            termc_C_DBG = Fore.LIGHTMAGENTA_EX
+        elif name == "forest":
+            termc_C_PRIMARY = Fore.GREEN
+            termc_C_MUTED = Fore.LIGHTBLACK_EX
+            termc_C_OK = Fore.LIGHTGREEN_EX
+            termc_C_ERR = Fore.RED
+            termc_C_WARN = Fore.YELLOW
+            termc_C_DBG = Fore.CYAN
+        elif name == "lava":
+            termc_C_PRIMARY = Fore.RED
+            termc_C_MUTED = Fore.LIGHTBLACK_EX
+            termc_C_OK = Fore.YELLOW
+            termc_C_ERR = Fore.LIGHTRED_EX
+            termc_C_WARN = Fore.LIGHTYELLOW_EX
+            termc_C_DBG = Fore.MAGENTA
+        elif name == "pastel":
+            termc_C_PRIMARY = Fore.LIGHTCYAN_EX
+            termc_C_MUTED = Fore.LIGHTBLACK_EX
+            termc_C_OK = Fore.LIGHTGREEN_EX
+            termc_C_ERR = Fore.LIGHTRED_EX
+            termc_C_WARN = Fore.LIGHTYELLOW_EX
+            termc_C_DBG = Fore.LIGHTMAGENTA_EX
         else:
-            print("Available presets: default, mono, ocean, sunset")
+            print("Available presets: default, mono, ocean, sunset, cyberpunk, forest, lava, pastel")
 
 
-### FUNCTIONS
-# -------------------------
 # inputs
-# -------------------------
-
 def prompt_header() -> None:
     timestamp = datetime.now().strftime("%H:%M:%S")
     print(
@@ -84,10 +106,7 @@ def prompt_bot(message: str) -> str:
     return input(f'{termc_C_PRIMARY}╰─❯{Style.RESET_ALL} {message}: ')
 
 
-# -------------------------
 # prints
-# -------------------------
-
 def info(message: str) -> None:
     print(f'{termc_C_PRIMARY}[i]{Style.RESET_ALL} {message}')
 
@@ -154,3 +173,46 @@ def progress_bar(current: int, total: int, width: int = 30) -> None:
     sys.stdout.flush()
     if current == total:
         print()
+
+def fatalerror(label="FATAL ERROR", message="FATAL ERROR", center=True, clear: bool = True):
+    if clear:
+        os.system('cls')
+    else:
+        return
+
+    lines = message.split("\n")
+    naj_linia = max(len(label) + 2, max(len(line) for line in lines))
+
+    if center:
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+        cols, rows = shutil.get_terminal_size()
+        wiado_szero = naj_linia + 4
+        wiado_wysokosc = len(lines) + 2
+
+        spaces_left = max((cols - wiado_szero) // 2, 0)
+        empty_lines_top = max((rows - wiado_wysokosc) // 2, 0)
+
+        spacje = " " * spaces_left
+        print("\n" * empty_lines_top, end="")
+    else:
+        spacje = ""
+
+    top_line = f'─ {label} '
+    top_line += '─' * (naj_linia - len(top_line) + 2)
+    print(f'{spacje}{termc_C_ERR}╭{top_line}╮{Style.RESET_ALL}')
+
+    for line in lines:
+        print(f'{spacje}{termc_C_ERR}│{Style.RESET_ALL} {line.ljust(naj_linia)} {termc_C_ERR}│{Style.RESET_ALL}')
+
+    print(f'{spacje}{termc_C_ERR}╰{"─" * (naj_linia + 2)}╯{Style.RESET_ALL}')
+        
+    for i in range(5):
+        print('\n')
+
+    klikniecia = 3
+    for k in range(3):
+        input(f"Click {klikniecia} times to hide this message")
+        klikniecia = klikniecia - 1
+        
+    os.system('cls')
