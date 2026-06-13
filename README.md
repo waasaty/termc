@@ -2,7 +2,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/version-0.1.0-blue" />
   <img src="https://img.shields.io/badge/license-MIT-green" />
-  <img src="https://img.shields.io/badge/PyPI%20status-active-red" />
+  <img src="https://img.shields.io/badge/PyPI%20status-active-green" />
 </p>
 A tiny Python library that makes terminal apps look way cooler with almost no effort.
 
