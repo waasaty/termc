@@ -8,3 +8,4 @@ venv/
 .idea/
 syscli.egg-info
 test/
+web/

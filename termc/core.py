@@ -1,3 +1,9 @@
+#   ______                    ______
+#  /_  __/__  _________ ___  / ____/ by: waasaty
+#   / / / _ \/ ___/ __ `__ \/ /     
+#  / / /  __/ /  / / / / / / /___   
+# /_/  \___/_/  /_/ /_/ /_/\____/   v0.1.4
+
 from colorama import Fore, Style, init
 import getpass
 from datetime import datetime
@@ -18,12 +24,19 @@ termc_C_DBG = Fore.MAGENTA
 
 termc_pc_username = getpass.getuser()
 termc_program_name = "termc"
+termc_timestamp = True
 
 class termcConfig:
     @staticmethod
     def program_name(name: str) -> None:
         global termc_program_name
         termc_program_name = name
+
+    @staticmethod
+    def timestamp(onoff: bool):
+        global termc_timestamp
+        termc_timestamp = bool(onoff)
+
 
     @staticmethod
     def preset(name: str = "default"):
@@ -107,26 +120,32 @@ def prompt_mid(message: str) -> str:
 def prompt_bot(message: str) -> str:
     return input(f'{termc_C_PRIMARY}╰─❯{Style.RESET_ALL} {message}: ')
 
+def log(level: str = 'info', msg: str = None, Timestamp: bool = None):
+    if Timestamp is None:
+        Timestamp = termc_timestamp
+    colors = {
+        "info": termc_C_PRIMARY,
+        "ok": termc_C_OK,
+        "warn": termc_C_WARN,
+        "err": termc_C_ERR,
+        "dbg": termc_C_DBG
+    }
 
-# prints
-def info(message: str) -> None:
-    print(f'{termc_C_PRIMARY}[i]{Style.RESET_ALL} {message}')
+    prefix = {
+        "info": "[i]",
+        "ok": "[✓]",
+        "warn": "[!]",
+        "err": "[x]",
+        "dbg": "[~]"
+    }
 
+    c = colors.get(level, termc_C_PRIMARY)
+    p = prefix.get(level, "[?]")
 
-def error(message: str) -> None:
-    print(f'{termc_C_ERR}[✗]{Style.RESET_ALL} {message}')
-
-
-def success(message: str) -> None:
-    print(f'{termc_C_OK}[✓]{Style.RESET_ALL} {message}')
-
-
-def warn(message: str) -> None:
-    print(f'{termc_C_WARN}[!]{Style.RESET_ALL} {message}')
-
-
-def dbg(message: str) -> None:
-    print(f'{termc_C_DBG}[~]{Style.RESET_ALL} {message}')
+    if Timestamp == True:
+        print(f"{c}{p}{Style.RESET_ALL} {Style.BRIGHT}{termc_C_MUTED}{datetime.now().strftime('%H:%M:%S')}{Style.RESET_ALL} {msg}{Fore.RESET}")
+    else:
+        print(f"{c}{p}{Style.RESET_ALL} {msg}{Fore.RESET}")
 
 
 def option(number: int, message: str) -> str:
@@ -250,17 +269,17 @@ def qr(data: str, border: bool = True) -> None:
         (True, True): "█",
     }
 
-    lines = []
+    krechy = []
     for y in range(0, len(sgascsa), 2):
         line = ""
         for x in range(len(sgascsa[0])):
             top = sgascsa[y][x]
             bottom = sgascsa[y + 1][x]
             line += pomniejszyctrza[(top, bottom)]
-        lines.append(line)
+        krechy.append(line)
 
-    width = max(len(line) for line in lines) + 2
-    print(f'{termc_C_PRIMARY}╭{"─" * width}╮{Style.RESET_ALL}')
-    for line in lines:
-        print(f'{termc_C_PRIMARY}│{Style.RESET_ALL} {line.ljust(width - 1)}{termc_C_PRIMARY}│{Style.RESET_ALL}')
-    print(f'{termc_C_PRIMARY}╰{"─" * width}╯{Style.RESET_ALL}')
+    szerokinaboki = max(len(line) for line in krechy) + 2
+    print(f'{termc_C_PRIMARY}╭{"─" * szerokinaboki}╮{Style.RESET_ALL}')
+    for line in krechy:
+        print(f'{termc_C_PRIMARY}│{Style.RESET_ALL} {line.ljust(szerokinaboki - 1)}{termc_C_PRIMARY}│{Style.RESET_ALL}')
+    print(f'{termc_C_PRIMARY}╰{"─" * szerokinaboki}╯{Style.RESET_ALL}')

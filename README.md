@@ -1,6 +1,6 @@
 ![Banner](assets/banner.png)
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.1.3-blue" />
+  <img src="https://img.shields.io/badge/version-0.1.4-blue" />
   <img src="https://img.shields.io/badge/license-MIT-green" />
   <img src="https://img.shields.io/badge/PyPI%20status-active-green" />
 </p>
@@ -36,7 +36,7 @@ https://apt29.gitbook.io/termc
 
 ---
 
-## 💡 Why termc?
+## 💡 Why TermC?
 
 Because writing:
 
@@ -45,7 +45,7 @@ print("[INFO] Application started")
 ```
 for the 500th time gets boring.
 
-termc gives your terminal projects a cleaner and more professional look while keeping everything simple.
+TermC gives your terminal projects a cleaner and more professional look while keeping everything simple.
 
 ---
 
