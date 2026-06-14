@@ -4,6 +4,8 @@ from datetime import datetime
 import sys
 import shutil
 import os
+import time
+import qrcode
 
 init(autoreset=True)    
 
@@ -212,7 +214,53 @@ def fatalerror(label="FATAL ERROR", message="FATAL ERROR", center=True, clear: b
 
     klikniecia = 3
     for k in range(3):
-        input(f"Click {klikniecia} times to hide this message")
+        if klikniecia == 1:
+            input(f"Click {klikniecia} time to hide this message")
+        else:
+            input(f"Click {klikniecia} times to hide this message")
         klikniecia = klikniecia - 1
         
     os.system('cls')
+
+def typewrite(text: str, speed: float = 0.03, color: str = None, newline: bool = True) -> None:
+    if color is None:
+        color = termc_C_PRIMARY
+    sys.stdout.write(color)
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(speed)
+    sys.stdout.write(Style.RESET_ALL)
+    if newline:
+        print()
+
+def qr(data: str, border: bool = True) -> None:
+    qr = qrcode.QRCode(border=1 if border else 0)
+    qr.add_data(data)
+    qr.make(fit=True)
+
+    sgascsa = qr.get_matrix()
+    if len(sgascsa) % 2 != 0:
+        sgascsa.append([False] * len(sgascsa[0]))
+
+    pomniejszyctrza = {
+        (False, False): " ",
+        (True, False): "▀",
+        (False, True): "▄",
+        (True, True): "█",
+    }
+
+    lines = []
+    for y in range(0, len(sgascsa), 2):
+        line = ""
+        for x in range(len(sgascsa[0])):
+            top = sgascsa[y][x]
+            bottom = sgascsa[y + 1][x]
+            line += pomniejszyctrza[(top, bottom)]
+        lines.append(line)
+
+    width = max(len(line) for line in lines) + 2
+    print(f'{termc_C_PRIMARY}╭{"─" * width}╮{Style.RESET_ALL}')
+    for line in lines:
+        print(f'{termc_C_PRIMARY}│{Style.RESET_ALL} {line.ljust(width - 1)}{termc_C_PRIMARY}│{Style.RESET_ALL}')
+    print(f'{termc_C_PRIMARY}╰{"─" * width}╯{Style.RESET_ALL}')
